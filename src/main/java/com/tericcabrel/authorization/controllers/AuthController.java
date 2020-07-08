@@ -86,7 +86,7 @@ public class AuthController {
 
         User user = userService.save(userDto);
 
-        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
+       eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
 
         return ResponseEntity.ok(new ServiceResponse(HttpStatus.OK.value(), user));
     }
