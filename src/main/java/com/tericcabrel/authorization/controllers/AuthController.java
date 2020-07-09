@@ -83,10 +83,11 @@ public class AuthController {
         roles.add(role);
 
         userDto.setRoles(roles);
-
+        userDto.setConfirmed(true);
+        
         User user = userService.save(userDto);
 
-       eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
+        //eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user));
 
         return ResponseEntity.ok(new ServiceResponse(HttpStatus.OK.value(), user));
     }
@@ -98,6 +99,7 @@ public class AuthController {
         @ApiResponse(code = 403, message = FORBIDDEN_MESSAGE, response = BadRequestResponse.class),
         @ApiResponse(code = 422, message = INVALID_DATA_MESSAGE, response = InvalidDataResponse.class),
     })
+    
     @PostMapping(value = "/login")
     public ResponseEntity<ServiceResponse> login(@Valid @RequestBody LoginUserDto loginUserDto) throws AuthenticationException {
         final Authentication authentication = authenticationManager.authenticate(
@@ -109,7 +111,7 @@ public class AuthController {
 
         User user = userService.findByEmail(loginUserDto.getEmail());
         HashMap<String, String> result = new HashMap<>();
-
+        //System.out.println();
         if (!user.isEnabled()) {
             result.put("data", "Your account has been deactivated!");
 

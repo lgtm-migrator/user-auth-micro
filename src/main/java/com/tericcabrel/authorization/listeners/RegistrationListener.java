@@ -67,6 +67,9 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         final MimeMessageHelper email;
         try {
             email = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+            System.out.println("===========email========="+user.getEmail());
+            System.out.println("=======mailFrom============="+mailFrom);
+            System.out.println("======mailFromName=========="+mailFromName);
 
             email.setTo(user.getEmail());
             email.setSubject(MAIL_SUBJECT);
