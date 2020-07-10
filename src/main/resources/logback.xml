@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<property name="LOG_PATH" value="logs"/>
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{35} - %msg%n"/>
 
     <appender name="server-console" class="ch.qos.logback.core.ConsoleAppender">
