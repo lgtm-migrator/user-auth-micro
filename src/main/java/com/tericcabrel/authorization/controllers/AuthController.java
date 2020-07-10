@@ -176,12 +176,7 @@ public class AuthController {
 
         return ResponseEntity.badRequest().body(new ServiceResponse(HttpStatus.OK.value(), result));
     }
-
-
-    @ApiOperation(value = "Logout a user from the system", response = ServiceResponse.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Logged Out successfully!", response = UserResponse.class),
-    })
+    
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         logger.debug("Inside logout Before Call , The response is " + response);
